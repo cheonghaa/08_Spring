@@ -6,6 +6,7 @@ import org.scoula.ex03.dto.TodoDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import lombok.extern.log4j.Log4j;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -82,5 +83,14 @@ public class SampleController {
     public void ex05() {
         log.info("/ex05........");
     }
+
+    @GetMapping("/ex06")
+    public String ex06(RedirectAttributes ra) {
+        log.info("/ex06........");
+        ra.addAttribute("name", "AAA");
+        ra.addAttribute("age", 10);
+        return "redirect:/sample/ex06-2";
+    }
+
 
 }
