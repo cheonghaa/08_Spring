@@ -70,12 +70,17 @@ public class SampleController {
 //        return "sample/ex04";
 //    }
 
-    
+
     @GetMapping("/ex04") // URL이 "/sample/ex04"일 때 호출됩니다. GET 요청을 처리합니다.
     public String ex04(SampleDTO dto, @ModelAttribute("page") int page) { // 쿼리 파라미터로 SampleDTO 객체와 "page" 값을 받습니다.
         log.info("dto: " + dto); // SampleDTO 객체를 로그에 기록합니다.
         log.info("page: " + page); // "page" 값을 로그에 기록합니다.
         return "sample/ex04"; // "sample/ex04"라는 뷰 이름을 반환합니다.
+    }
+
+    @GetMapping("/ex05")
+    public void ex05() {
+        log.info("/ex05........");
     }
 
 }
