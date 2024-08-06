@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import lombok.extern.log4j.Log4j;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -90,6 +91,15 @@ public class SampleController {
         ra.addAttribute("name", "AAA");
         ra.addAttribute("age", 10);
         return "redirect:/sample/ex06-2";
+    }
+
+    @GetMapping("/ex07")
+    public @ResponseBody SampleDTO ex07() {
+        log.info("/ex07........");
+        SampleDTO dto = new SampleDTO();
+        dto.setAge(10);
+        dto.setName("홍길동");
+        return dto;
     }
 
 
