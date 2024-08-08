@@ -10,9 +10,6 @@
         select * from tbl_board
         ]]>
 </select>
-<!--    <select id="get" resultType="org.scoula.board.domain.BoardVO">-->
-
-<!--    </select>-->
 
     <select id="get" resultType="BoardVO">
         select * from tbl_board where no = #{no}
@@ -21,6 +18,23 @@
     <insert id="create">
         insert into tbl_board (title, content, writer)
         values (#{title}, #{content}, #{writer})
+
+        <selectKey resultType="Long" keyProperty="no" keyColumn="no" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
     </insert>
+
+    <update id="update">
+        update tbl_board set
+                             title = #{title},
+                             content = #{content},
+                             writer = #{writer},
+                             update_date = now()
+        where no = #{no}
+    </update>
+
+    <delete id="delete">
+        delete from tbl_board where no = #{no}
+    </delete>
 
 </mapper>
